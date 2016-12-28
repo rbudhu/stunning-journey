@@ -1,0 +1,50 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	Tenso
+      </div>
+      <div class="panel-body">
+	<div class="alert alert-info">
+	  Upload an image from your computer then use the selection tool to
+	  define the area you want to progressively zoom in on.
+	</div>
+	<form enctype="multipart/form-data" method="POST" class="form">
+	  {% csrf_token %}
+	  {% bootstrap_field form.image %}
+	  <div style="max-height:400px;">
+	    <img src="" id="img-preview" />
+	  </div>
+	  {% bootstrap_field form.box %}
+	  {% bootstrap_field form.text %}
+	  {% bootstrap_field form.num_panels %}
+	  {% bootstrap_field form.text_pos %}
+	  {% bootstrap_field form.share %}
+	  {% buttons %}
+	  <input type="submit" class="btn btn-primary" value="Generate" />
+	  {% endbuttons %}
+	</form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr />
+    <h3>Latest Tenso Memes</h3>
+    {% for tenso in tensos %}
+    <div class="col-xs-4 col-md-3">
+      <div class="thumbnail">
+	<a href="{% url 'web:tenso' pk=tenso.pk %}"><img src="{{ MEDIA_URL }}{{ tenso.image.name }}" /></a>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block javascript %}
+  <script src="{% static 'web/js/tenso.js' %}"></script>
+{% endblock %}

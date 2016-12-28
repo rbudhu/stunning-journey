@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Tenso Meme Generator</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="{% static 'web/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'web/css/cropper.css' %}" rel="stylesheet">
+    </head>
+    
+    <body id="page-top" class="bg-dark">
+	<nav id="main-nav" class="navbar navbar-default">
+            <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+                    <a class="navbar-brand page-scroll" href="#page-top">TensoGenerator</a>
+		</div>
+            </div>
+	</nav>
+	<div class="container-fluid">
+	  <div class="row">
+	    <div class="col-md-12">
+	      {% block content %}
+	      {% endblock %}
+	    </div>
+	  </div>
+	</div>
+	<!-- jQuery -->
+	<script src="{% static 'web/js/jquery.min.js' %}"></script>
+	<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'web/js/cropper.min.js' %}"></script>
+	{% block javascript %}
+	{% endblock %}
+    </body>
+</html>

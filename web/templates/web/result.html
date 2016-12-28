@@ -1,0 +1,13 @@
+{% extends 'web/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="alert alert-info">
+      Right-click on the image and choose "Save As.." to save it to your computer.
+    </div>
+    <div class="thumbnail">
+      <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+    </div>
+  </div>
+</div>
+{% endblock %}
