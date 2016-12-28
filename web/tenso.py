@@ -15,7 +15,7 @@ class Tenso(object):
         self.font_path = font_path
 
     def resize(self, im):
-        scale = self.w / im.width
+        scale = float(self.w) / float(im.width)
         h = int(im.height * scale)
         return im.resize((self.w, h))
 

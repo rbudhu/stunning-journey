@@ -40,6 +40,6 @@ class Document(models.Model):
         buffer.seek(0)
         self.image = InMemoryUploadedFile(buffer, 'ImageField',
                                           self.image.name, 'image/jpeg',
-                                          buffer.getbuffer().nbytes,
+                                          buffer.getvalue(),
                                           None, None)
         return super(Document, self).save(*args, **kwargs)

@@ -1,0 +1,6 @@
+#Files to ignore
+
+db.sqlite3
+media*
+*.pyc
+*~
