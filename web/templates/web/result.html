@@ -1,13 +1,45 @@
 {% extends 'web/base.html' %}
+{% block meta %}
+<meta property="og:url"                content="{{ url }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="TensoGenerator Tenso Meme" />
+<meta property="og:description"        content="Create your own Tenso memes at http://www.tensogenerator.com" />
+<meta property="og:image"              content="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+{% endblock %}
 {% block content %}
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="alert alert-info">
-      Right-click on the image and choose "Save As.." to save it to your computer.
+      Right-click on the image and choose "Save As.." to save it to your computer or share it to Facebook.<br>
+      <center>
+	<div class="fb-share-button" 
+	     data-href="{{ url }}"
+	     data-layout="button_count"
+	     data-size="large">
+	</div>
+      </center>
     </div>
     <div class="thumbnail">
       <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
     </div>
+    <div class="alert alert-info">
+      <center>
+	<div class="fb-share-button" 
+	     data-href="{{ url }}"
+	     data-layout="button_count"
+	     data-size="large">
+	</div>
+      </center>
+    </div>
   </div>
 </div>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=993885984051036";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}

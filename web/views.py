@@ -31,10 +31,12 @@ class TensoView(TemplateView):
 
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get('pk')
+        url = self.request.build_absolute_uri(reverse('web:tenso', args=(pk, )))
         context = super(TensoView, self).get_context_data(**kwargs)
         try:
             tenso = Document.objects.get(pk=pk)
             context['tenso'] = tenso
+            context['url'] = url
         except Document.DoesNotExist:
             # TODO: Return Http404
             pass
