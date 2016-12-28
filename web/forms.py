@@ -3,6 +3,8 @@ from .models import Document
 
 
 class DocumentForm(forms.ModelForm):
+    num_panels = forms.IntegerField(min_value = 2, max_value = 6)
+
     class Meta:
         model = Document
         widgets = {'box': forms.HiddenInput()}
