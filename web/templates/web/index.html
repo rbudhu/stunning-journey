@@ -3,7 +3,7 @@
 {% load bootstrap3 %}
 {% block content %}
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
 	Tenso
@@ -16,9 +16,6 @@
 	<form enctype="multipart/form-data" method="POST" class="form">
 	  {% csrf_token %}
 	  {% bootstrap_field form.image %}
-	  <div style="max-height:400px;">
-	    <img src="" id="img-preview" />
-	  </div>
 	  {% bootstrap_field form.box %}
 	  {% bootstrap_field form.text %}
 	  {% bootstrap_field form.num_panels %}
@@ -31,16 +28,18 @@
       </div>
     </div>
   </div>
+  <div class="col-md-4" style="max-height:400px;">
+      <img src="" id="img-preview" />
+  </div>    
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <hr />
-    <h3>Latest Tenso Memes</h3>
+<hr/>
+<h3>Latest Tenso Memes</h3>    
+<div class="latest-img-row">
     {% for tenso in tensos %}
-    <div class="col-xs-4 col-md-3">
-      <div class="thumbnail">
-	<a href="{% url 'web:tenso' pk=tenso.pk %}"><img src="{{ MEDIA_URL }}{{ tenso.image.name }}" /></a>
-      </div>
+    <div class="latest-img thumbnail">
+	<a href="{% url 'web:tenso' pk=tenso.pk %}">
+	    <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+	</a>
     </div>
     {% endfor %}
 </div>

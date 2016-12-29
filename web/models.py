@@ -19,7 +19,7 @@ class Document(models.Model):
     # TODO: Remove blank=True when cropper is re-implemented
     box = models.CharField(max_length=255, blank=True)
     image = models.ImageField(upload_to='.')
-    num_panels = models.IntegerField(default=4)
+    num_panels = models.IntegerField()
     text_pos = models.CharField(max_length=10, choices=TEXT_POS_CHOICES,
                                 default='Top')
     share = models.BooleanField(default=True)
