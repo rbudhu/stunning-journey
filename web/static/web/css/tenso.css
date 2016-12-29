@@ -2,16 +2,28 @@
 
 
 .latest-img-row {
- -moz-column-width: 18em;
- -webkit-column-width: 18em;
- -moz-column-gap: 1em;
- -webkit-column-gap: 1em; 
+    -moz-column-width: 18em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em; 
   
 }
 
 .latest-img {
- display: inline-block;
- margin:  0.25rem;
- padding:  1rem;
- width:  100%; 
+    display: inline-block;
+    margin:  0.25rem;
+    padding:  1rem;
+    width:  100%; 
+}
+
+.footer {
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    border-color: #e7e7e7;
+    margin-top: 35px;
+}
+
+#footer-text {
+    margin-top: 10px;
 }
