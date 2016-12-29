@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 
@@ -38,7 +38,6 @@ class TensoView(TemplateView):
             context['tenso'] = tenso
             context['url'] = url
         except Document.DoesNotExist:
-            # TODO: Return Http404
-            pass
+            raise Http404
         return context
 
