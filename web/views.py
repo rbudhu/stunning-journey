@@ -2,6 +2,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
+from django.views import View
+from django.shortcuts import render
 
 from .models import Document
 from .forms import DocumentForm
@@ -42,3 +44,9 @@ class TensoView(TemplateView):
             pass
         return context
 
+class PolicyView(View):
+    template_name = 'web/policy.html'
+
+    def get(self, request):        
+        return render(request, self.template_name)
+    

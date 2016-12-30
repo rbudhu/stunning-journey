@@ -27,3 +27,12 @@
 #footer-text {
     margin-top: 10px;
 }
+
+#img-preview-div {
+    max-height: 100%;
+}
+
+.cropper-container {
+    width: 100% !important;
+    max-height: 100% !important: 
+}

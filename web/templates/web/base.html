@@ -22,7 +22,7 @@
             <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-                    <a class="navbar-brand page-scroll" href="#page-top">TensoGenerator</a>
+                    <a class="navbar-brand page-scroll" href="{% url 'web:index' %}">TensoGenerator</a>
 		</div>
             </div>
 	</nav>
@@ -36,7 +36,14 @@
 	</div>
 	<footer class="footer">	 
 	    <div class="container-fluid">
-		<p id="footer-text">&copy Tenso Meme Generator</p>
+		<div class="row">
+		    <div class="col-md-11">
+			<p id="footer-text">&copy Tenso Meme Generator</p>
+		    </div>
+		    <div class="col-md-1">		
+			<a href="{% url 'web:policy' %}">Privacy Policy</a>
+		    </div
+		</div>
 	    </div>
 	</footer>
 	<!-- jQuery -->

@@ -3,7 +3,10 @@
 {% load bootstrap3 %}
 {% block content %}
 <div class="row">
-  <div class="col-md-4">
+    
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">
 	Tenso
@@ -12,6 +15,9 @@
 	<div class="alert alert-info">
 	  Upload an image from your computer then use the selection tool to
 	  define the area you want to progressively zoom in on.
+	</div>
+	<div id="img-upload-warning" class="alert alert-warning hidden">
+	    Please upload the correct image type (TIF, PNG, JPG, etc)
 	</div>
 	<form enctype="multipart/form-data" method="POST" class="form">
 	  {% csrf_token %}
@@ -28,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4" style="max-height:400px;">
+  <div id="img-preview-div" class="col-md-4 thumbnail hidden">
       <img src="" id="img-preview" />
   </div>    
 </div>
