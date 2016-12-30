@@ -92,21 +92,3 @@ class Tenso(object):
                 ty = tenso.height - fh - 10
             draw.text((tx, ty), self.text, font=font)
         return tenso
-        
-
-infile = sys.argv[1]
-try:
-    with Image.open(infile) as im:
-        # Input corner coordinates (x1, y1, x2, y2)
-        # mena.jpg test coordinates
-        #box = [702, 261, 794, 351]
-        box = [210, 258, 305, 361]
-        #box = [549, 265, 622, 344]
-        #box = [795, 282, 945, 437]
-        #box = [0, 266, 183, 392]
-        #box = [574, 641, 753, 717]
-        #box = [598, 0, 673, 91]
-        tenso = Tenso(im, box, num_panels = 2)
-        tenso.generate().save('tenso.jpg')
-except IOError:
-    pass
