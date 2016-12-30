@@ -1,5 +1,13 @@
 *, *:before, *:after {box-sizing:  border-box !important;}
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 40px;
+}
 
 .latest-img-row {
     -moz-column-width: 18em;
@@ -21,10 +29,13 @@
     border-radius: 4px;
     border: 1px solid transparent;
     border-color: #e7e7e7;
-    margin-top: 35px;
+    height: 40px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
-#footer-text {
+.footer-text {
     margin-top: 10px;
 }
 
