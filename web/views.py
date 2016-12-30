@@ -20,7 +20,7 @@ class IndexView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        tensos = Document.objects.filter(share=True).order_by('created')[:10]
+        tensos = Document.objects.filter(share=True).order_by('-created')[:10]
         context['tensos'] = tensos
         return context
 

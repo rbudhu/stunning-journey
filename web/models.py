@@ -26,7 +26,6 @@ class Document(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
-        print(self.box)
         img = Image.open(io.BytesIO(self.image.read()))
         # TODO: Change hardcoded coordinates to self.box
         tenso = Tenso(img, json.loads(self.box),
