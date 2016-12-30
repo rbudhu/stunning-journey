@@ -43,5 +43,5 @@ class TensoView(TemplateView):
             pass
         return context
 
-class PolicyView(TemplateView):
-    template_name = 'web/policy.html'
+class PrivacyView(TemplateView):
+    template_name = 'web/privacy.html'

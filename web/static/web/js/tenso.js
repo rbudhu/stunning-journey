@@ -1,5 +1,5 @@
 $("#id_image").change(function(event) {
-    var fileTypes = ['jpg', 'jpeg', 'png', 'tif'];  //acceptable file types
+    var fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
     
     if (event.target.files && event.target.files[0]) {
         var extension = event.target.files[0].name.split('.').pop().toLowerCase(),  
@@ -25,6 +25,9 @@ $("#id_image").change(function(event) {
 				   e.detail.y + e.detail.height];
 			var box_json = JSON.stringify(box);
 			$("#id_box").val(box_json);
+		    },
+		    ready: function () {
+			this.cropper.replace(output.src);
 		    }
 		});
             };
