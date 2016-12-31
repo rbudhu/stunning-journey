@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
@@ -21,7 +21,7 @@ class IndexView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        tensos = Document.objects.filter(share=True).order_by('created')[:15]
+        tensos = Document.objects.filter(share=True).order_by('-created')[:10]
         context['tensos'] = tensos
         return context
 
@@ -39,8 +39,7 @@ class TensoView(TemplateView):
             context['tenso'] = tenso
             context['url'] = url
         except Document.DoesNotExist:
-            # TODO: Return Http404
-            pass
+            raise Http404
         return context
 
 class PrivacyView(TemplateView):
