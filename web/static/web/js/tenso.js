@@ -12,11 +12,14 @@ $("#id_image").change(function(event) {
 	    if (!$( '#img-upload-warning' ).hasClass('hidden')) {
 		$( '#img-upload-warning' ).addClass('hidden');
 	    }
-
+	    
 	    var reader = new FileReader();
 	    reader.onload = function(){
 		var output = document.getElementById('img-preview');
 		output.src = reader.result;
+		if (output.cropper) {
+		    output.cropper.replace(output.src);
+		}
 		var cropper = new Cropper(output, {
 		    background: false,
 		    crop: function(e) {
@@ -25,9 +28,6 @@ $("#id_image").change(function(event) {
 				   e.detail.y + e.detail.height];
 			var box_json = JSON.stringify(box);
 			$("#id_box").val(box_json);
-		    },
-		    ready: function () {
-			this.cropper.replace(output.src);
 		    }
 		});
             };
