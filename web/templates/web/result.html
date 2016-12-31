@@ -4,7 +4,7 @@
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="TensoGenerator Tenso Meme" />
 <meta property="og:description"        content="Create your own Tenso memes at http://www.tensogenerator.com" />
-<meta property="og:image"              content="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+<meta property="og:image"              content="//{{ site }}{{ MEDIA_URL }}{{ tenso.image.name }}" />
 {% endblock %}
 {% block content %}
 <div class="row">
@@ -49,6 +49,8 @@
 </div>
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
+{% endblock %}
+{% block javascript %}
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -56,4 +58,5 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=993885984051036";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5867029aed7a3161"></script>
 {% endblock %}
