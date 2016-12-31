@@ -2,7 +2,6 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
-from django.shortcuts import render
 
 from .models import Document
 from .forms import DocumentForm
