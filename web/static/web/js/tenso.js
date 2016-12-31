@@ -1,4 +1,5 @@
-$("#id_image").change(function(event) {
+$(document).ready(function() {
+  $("#id_image").change(function(event) {
     var fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
     
     if (event.target.files && event.target.files[0]) {
@@ -6,13 +7,6 @@ $("#id_image").change(function(event) {
 	    isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
 
         if (isSuccess) {
-	    if ($( '#img-preview-div' ).hasClass('hidden')) {
-		$( '#img-preview-div' ).removeClass('hidden');
-	    }
-	    if (!$( '#img-upload-warning' ).hasClass('hidden')) {
-		$( '#img-upload-warning' ).addClass('hidden');
-	    }
-
 	    var reader = new FileReader();
 	    reader.onload = function(){
 		var output = document.getElementById('img-preview');
@@ -37,9 +31,8 @@ $("#id_image").change(function(event) {
 	    reader.readAsDataURL(event.target.files[0]);
 	}
 	else {
-	    if ($( '#img-upload-warning' ).hasClass('hidden')) {
 		$( '#img-upload-warning' ).removeClass('hidden');
-	    }
 	}
     }
+  });
 });
