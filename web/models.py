@@ -45,6 +45,10 @@ class Document(models.Model):
         return super(Document, self).save(*args, **kwargs)
 
     def image_tag(self):
-        return mark_safe('<img src="%s%s" width="150" height="350" />' % (settings.MEDIA_URL, self.image))
+        return mark_safe('<img src="{}{}" width="150" height="350" />'.format(settings.MEDIA_URL, self.image))
+
+
+    def __str__(self):
+        return 'Document {} - {}'.format(self.pk, self.created)
 
     image_tag.short_description = 'Image'
