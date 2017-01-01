@@ -3,6 +3,7 @@ import json
 from django.db import models
 from django.conf import settings
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.utils.html import mark_safe
 
 from PIL import Image
 
@@ -42,3 +43,8 @@ class Document(models.Model):
                                           buffer.getbuffer().nbytes,
                                           None, None)
         return super(Document, self).save(*args, **kwargs)
+
+    def image_tag(self):
+        return mark_safe('<img src="%s%s" width="150" height="350" />' % (settings.MEDIA_URL, self.image))
+
+    image_tag.short_description = 'Image'
