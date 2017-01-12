@@ -3,9 +3,9 @@ $(document).ready(function() {
     var fileTypes = ['jpg', 'jpeg', 'png', 'gif'];  //acceptable file types
     
     if (event.target.files && event.target.files[0]) {
-        var extension = event.target.files[0].name.split('.').pop().toLowerCase(),  
-	    isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
-
+        var extension = event.target.files[0].name.split('.').pop();
+	isSuccess = fileTypes.indexOf(extension.toLowerCase()) > -1;
+	$( '#img-upload-warning' ).addClass('hidden');
         if (isSuccess) {
 	    var reader = new FileReader();
 	    reader.onload = function(){
@@ -18,6 +18,7 @@ $(document).ready(function() {
 		else {
 		    var cropper = new Cropper(output, {
 			background: false,
+			zoomable: false,
 			crop: function(e) {
 			    var box = [e.detail.x, e.detail.y,
 				       e.detail.x + e.detail.width,
@@ -31,7 +32,7 @@ $(document).ready(function() {
 	    reader.readAsDataURL(event.target.files[0]);
 	}
 	else {
-		$( '#img-upload-warning' ).removeClass('hidden');
+	    $( '#img-upload-warning' ).removeClass('hidden');
 	}
     }
   });

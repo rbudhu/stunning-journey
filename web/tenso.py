@@ -42,13 +42,18 @@ class Tenso(object):
 
         # Compute the scale factor
         w = self.box[2] - self.box[0]
-        scale = math.ceil(self.w / w) / (self.num_panels + 2)
+        final_scale = self.w / w
+        scale = final_scale / (self.num_panels + 2)
 
         # The magic number 2 is used because we've already
         # manually generated 2 panels: the first and the last ones
 
         for panel in range(self.num_panels - 2):
             z = scale * (panel + 2)
+            # If we're not zooming IN, just set the zoom factor
+            # to the final_scale to match the last panel
+            if z < 1.0:
+                z = final_scale
             zoom = self.im.resize((int(self.im.width * z),
                                    int(self.im.height * z)))
             # Center of zoomed image
