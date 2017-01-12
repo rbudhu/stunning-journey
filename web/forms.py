@@ -12,7 +12,7 @@ class DocumentForm(forms.ModelForm):
         widgets = {'box': forms.HiddenInput()}
         fields = ('image', 'text', 'text_pos', 'box', 'num_panels', 'share', )
         labels = {
-            'text': 'Text (optional)',
+            'text': 'Text (20 chars max - optional)',
             'image': 'Image',
             'text_pos': 'Text Position (optional)',
             'num_panels': 'Number of Panels (optional)',

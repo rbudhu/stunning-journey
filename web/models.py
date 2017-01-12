@@ -16,7 +16,7 @@ class Document(models.Model):
         ('bottom', 'Bottom'),
         )
 
-    text = models.CharField(max_length=255, blank=True)
+    text = models.CharField(max_length=20, blank=True)
     # TODO: Remove blank=True when cropper is re-implemented
     box = models.CharField(max_length=255, blank=True)
     image = models.ImageField(upload_to='.')

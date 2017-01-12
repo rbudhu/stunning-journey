@@ -84,7 +84,10 @@ class Tenso(object):
         # Do texty stuff
         if self.text is not None:
             draw = ImageDraw.Draw(tenso)
-            font = ImageFont.truetype(self.font_path, 48)
+            font_size = 48
+            if len(self.text) > 10:
+                font_size = 24
+            font = ImageFont.truetype(self.font_path, font_size)
             fw, fh = font.getsize(self.text)
             tx = (self.w - fw) / 2
             ty = y + 10
