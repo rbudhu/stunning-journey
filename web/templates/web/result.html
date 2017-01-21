@@ -1,4 +1,6 @@
 {% extends 'web/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
 {% block meta %}
 <meta property="og:url"                content="{{ url }}" />
 <meta property="og:type"               content="article" />
@@ -23,8 +25,18 @@
       <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
     </div>
     <div class="alert alert-info">
-      <center>
-	<div class="fb-share-button" 
+	<center>
+	    {% if not tenso.share %}
+	    <div id="tenso-share-alert" class="alert alert-warning hidden">
+		Tenso share failed. Please refresh page and try again.
+	    </div>
+	    <div class="tenso-share-checkbox checkbox">
+		<label>
+		    <input id="tenso-share-checkbox" type="checkbox" data-pk="{{ tenso.pk }}"> Share this to the TensoGenerator homepage?
+		</label>
+	    </div>
+	    {% endif %}
+	  <div class="fb-share-button" 
 	     data-href="{{ url }}"
 	     data-layout="button_count"
 	     data-size="large">
@@ -59,5 +71,6 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=993885984051036";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5867029aed7a3161"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5867029aed7a3161"></script>
+<script src="{% static 'web/js/result.js' %}"></script>
 {% endblock %}
