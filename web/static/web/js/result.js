@@ -5,7 +5,8 @@ $(document).ready(function() {
 		'pk': pk
 	    }, function() {
 	    }).done(function() {
-		location.reload();
+		$('#tenso-share-button').addClass('hidden');
+		$('#tenso-shared-button').removeClass('hidden');
 	    }).error(function() {
 		$('#tenso-share-alert').removeClass('hidden');
 	    });

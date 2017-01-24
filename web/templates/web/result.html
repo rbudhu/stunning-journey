@@ -31,10 +31,7 @@
 		</div>
 		<div class="tenso-share-button">
 		    <button id="tenso-share-button" class="btn btn-primary" data-pk="{{ tenso.pk }}">Share to homepage?</button>
-		</div>
-		{% else %}
-		<div class="tenso-share-button">
-		    <a class="btn btn-primary" href="{% url 'web:index' %}" role="button">Shared!</a>
+		    <a id="tenso-shared-button" class="btn btn-primary hidden" href="{% url 'web:index' %}" role="button">Shared!</a>
 		</div>
 		{% endif %}
 		<div class="fb-share-button"
