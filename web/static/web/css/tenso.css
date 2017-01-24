@@ -53,3 +53,7 @@ body {
     width: 100% !important;
     max-height: 100% !important: 
 }
+
+.tenso-share-button {
+    margin-bottom: 5px;
+}

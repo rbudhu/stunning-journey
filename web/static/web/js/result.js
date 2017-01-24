@@ -1,16 +1,13 @@
 $(document).ready(function() {
-    $("#tenso-share-checkbox").change(function() {
-	if (this.checked) {
+    $("#tenso-share-button").click(function() {
 	    var pk = $(this).data('pk');
 	    $.post(urls.share_tenso(), {
 		'pk': pk
 	    }, function() {
-		
 	    }).done(function() {
-		$('.tenso-share-checkbox').addClass('hidden');
+		location.reload();
 	    }).error(function() {
 		$('#tenso-share-alert').removeClass('hidden');
 	    });
-	}
     });
 });

@@ -9,40 +9,42 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="alert alert-info">
-      Right-click on the image and choose "Save As.." to save it to your computer or share it to Facebook using the Share button below.<br>
-      <center>
-	<div class="fb-share-button" 
-	     data-href="{{ url }}"
-	     data-layout="button_count"
-	     data-size="large">
+    <div class="col-md-6 col-md-offset-3">
+	<div class="alert alert-info">
+	    Right-click on the image and choose "Save As.." to save it to your computer or share it to Facebook using the Share button below.<br>
+	    <center>
+		<div class="fb-share-button"
+		     data-href="{{ url }}"
+		     data-layout="button_count"
+		     data-size="large">
+		</div>
+	    </center>
 	</div>
-      </center>
-    </div>
-    <div class="thumbnail">
-      <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
-    </div>
-    <div class="alert alert-info">
-	<center>
-	    {% if not tenso.share %}
-	    <div id="tenso-share-alert" class="alert alert-warning hidden">
-		Tenso share failed. Please refresh page and try again.
-	    </div>
-	    <div class="tenso-share-checkbox checkbox">
-		<label>
-		    <input id="tenso-share-checkbox" type="checkbox" data-pk="{{ tenso.pk }}"> Share this to the TensoGenerator homepage?
-		</label>
-	    </div>
-	    {% endif %}
-	  <div class="fb-share-button" 
-	     data-href="{{ url }}"
-	     data-layout="button_count"
-	     data-size="large">
+	<div class="thumbnail">
+	    <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
 	</div>
-      </center>
+	<div class="alert alert-info">
+	    <center>
+		{% if not tenso.share %}
+		<div id="tenso-share-alert" class="alert alert-warning hidden">
+		    Tenso share failed. Please refresh page and try again.
+		</div>
+		<div class="tenso-share-button">
+		    <button id="tenso-share-button" class="btn btn-primary" data-pk="{{ tenso.pk }}">Share to homepage?</button>
+		</div>
+		{% else %}
+		<div class="tenso-share-button">
+		    <a class="btn btn-primary" href="{% url 'web:index' %}" role="button">Shared!</a>
+		</div>
+		{% endif %}
+		<div class="fb-share-button"
+		     data-href="{{ url }}"
+		     data-layout="button_count"
+		     data-size="large">
+		</div>
+	    </center>
+	</div>
     </div>
-  </div>
 </div>
 <hr />
 <div class="row">
