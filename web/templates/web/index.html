@@ -30,7 +30,6 @@
 	  {% bootstrap_field form.text %}
 	  {% bootstrap_field form.text_pos %}
 	  {% bootstrap_field form.num_panels %}
-	  {% bootstrap_field form.share %}
 	  {% buttons %}
 	  <input type="submit" class="btn btn-primary" value="Generate" />
 	  {% endbuttons %}
@@ -43,7 +42,8 @@
   </div>
 </div>
 <hr/>
-<h3>Latest Tenso Memes</h3>    
+<h3>Latest Tenso Memes</h3>
+<a name="latest-tenso-memes">    
 <div class="latest-img-row">
     {% for tenso in tensos %}
     <div class="latest-img thumbnail">

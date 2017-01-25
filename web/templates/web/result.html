@@ -9,37 +9,57 @@
 {% endblock %}
 {% block content %}
 <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <center>
+    </center>
+  </div>
+</div>
+<div class="row">
     <div class="col-md-6 col-md-offset-3">
 	<div class="alert alert-info">
+	  <center>
+	    {% if not tenso.share %}
+	    <div id="tenso-share-alert" class="alert alert-warning">
+	      Tenso share failed. Please refresh the page and try again.
+	    </div>
+	    <div class="tenso-share">
+	      <button class="tenso-share-button btn btn-primary btn-lg" data-pk="{{ tenso.pk }}">Publish This Tenso Meme on the Homepage!</button>
+	      <a class="tenso-shared-button btn btn-success btn-lg hidden" href="{% url 'web:index' %}#latest-tenso-memes" role="button">Published! Go Back to the Homepage.</a>
+	    </div>
+	    or
+	    {% endif %}
+	  </center>
 	    Right-click on the image and choose "Save As.." to save it to your computer or share it to Facebook using the Share button below.<br>
-	    <center>
-		<div class="fb-share-button"
-		     data-href="{{ url }}"
-		     data-layout="button_count"
-		     data-size="large">
-		</div>
-	    </center>
+	  <center>
+	    <div class="fb-share-button"
+		 data-href="{{ url }}"
+		 data-layout="button_count"
+		 data-size="large">
+	    </div>
+	  </center>
 	</div>
 	<div class="thumbnail">
 	    <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
 	</div>
 	<div class="alert alert-info">
-	    <center>
-		{% if not tenso.share %}
-		<div id="tenso-share-alert" class="alert alert-warning hidden">
-		    Tenso share failed. Please refresh page and try again.
-		</div>
-		<div class="tenso-share-button">
-		    <button id="tenso-share-button" class="btn btn-primary" data-pk="{{ tenso.pk }}">Share to homepage?</button>
-		    <a id="tenso-shared-button" class="btn btn-primary hidden" href="{% url 'web:index' %}" role="button">Shared!</a>
-		</div>
-		{% endif %}
-		<div class="fb-share-button"
-		     data-href="{{ url }}"
-		     data-layout="button_count"
-		     data-size="large">
-		</div>
-	    </center>
+	  <center>
+	    {% if not tenso.share %}
+	    <div id="tenso-share-alert" class="alert alert-warning hidden">
+	      Tenso share failed. Please refresh page and try again.
+	    </div>
+	    <div class="tenso-share">
+	      <button class="tenso-share-button btn btn-primary btn-lg" data-pk="{{ tenso.pk }}">Publish This Tenso Meme on the Homepage!</button>
+	      <a class="tenso-shared-button btn btn-success btn-lg hidden" href="{% url 'web:index' %}#latest-tenso-memes" role="button">Published! Go Back to the Homepage.</a>
+	    </div>
+	    or
+	    <br>
+	    {% endif %}
+	    <div class="fb-share-button"
+		 data-href="{{ url }}"
+		 data-layout="button_count"
+		 data-size="large">
+	    </div>
+	  </center>
 	</div>
     </div>
 </div>

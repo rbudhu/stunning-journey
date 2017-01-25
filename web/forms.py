@@ -10,11 +10,10 @@ class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
         widgets = {'box': forms.HiddenInput()}
-        fields = ('image', 'text', 'text_pos', 'box', 'num_panels', 'share', )
+        fields = ('image', 'text', 'text_pos', 'box', 'num_panels',)
         labels = {
             'text': 'Text (20 chars max - optional)',
             'image': 'Image',
             'text_pos': 'Text Position (optional)',
             'num_panels': 'Number of Panels (optional)',
-            'share': 'Allow image to be displayed on the homepage',
         }
