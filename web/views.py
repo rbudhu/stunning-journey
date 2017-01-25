@@ -1,7 +1,7 @@
 from django.urls import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.views.generic.edit import FormView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 
 from .models import Document
 from .forms import DocumentForm
@@ -24,7 +24,6 @@ class IndexView(FormView):
         context['tensos'] = tensos
         return context
 
-
 class TensoView(TemplateView):
     template_name = 'web/result.html'
     context_object_name = 'tenso'
@@ -41,5 +40,27 @@ class TensoView(TemplateView):
             raise Http404
         return context
 
+class ShareView(View):
+    template_name = 'web/result.html'
+
+    def post(self, request):
+        try:
+            tenso_pk = request.POST.get('pk')
+            tenso = Document.objects.get(pk=tenso_pk)
+            tenso.share = True
+            tenso.save()
+            response = {
+                'status': 'Success',
+                'pk': tenso.pk
+            }        
+
+            return JsonResponse(response)
+
+        except Document.DoesNotExist:
+            raise Http404
+        
 class PrivacyView(TemplateView):
     template_name = 'web/privacy.html'
+
+class URLView(TemplateView):
+    template_name = 'web/urls.js'
