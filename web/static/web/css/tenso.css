@@ -57,3 +57,7 @@ body {
 .tenso-share {
     margin-bottom: 5px;
 }
+
+.tenso-share-button {
+    white-space: normal;
+}
