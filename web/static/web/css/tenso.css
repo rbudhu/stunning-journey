@@ -61,3 +61,7 @@ body {
 .tenso-share-button {
     white-space: normal;
 }
+
+.navbar-header {
+    width: 100%;
+}

@@ -24,6 +24,11 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
                     <a class="navbar-brand page-scroll" href="{% url 'web:index' %}">Tenso Meme Generator</a>
+		    {% if tenso.share %}
+		    <p class="navbar-btn pull-right">
+			<a class="btn btn-primary" href="{% url 'web:index' %}">Make your own</a>
+		    </p>
+		    {% endif %}
 		</div>
             </div>
 	</nav>
