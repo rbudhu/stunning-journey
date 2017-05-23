@@ -61,11 +61,10 @@ class ShareView(View):
             raise Http404
         
 class TensoListView(ListView):
-    model = Document
+    queryset = Document.objects.filter(share=True).order_by('-created')
     template_name = 'web/tenso_list.html'
     context_object_name = 'tenso_list'
     paginate_by = 20
-    ordering = '-created'
 
 class PrivacyView(TemplateView):
     template_name = 'web/privacy.html'
