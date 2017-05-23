@@ -43,18 +43,30 @@
 </div>
 <hr/>
 <h3>Latest Tenso Memes</h3>
-<a name="latest-tenso-memes">    
-<div class="latest-img-row">
-    {% for tenso in tensos %}
-    <div class="latest-img thumbnail">
-	<a href="{% url 'web:tenso' pk=tenso.pk %}">
-	    <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
-	</a>
-    </div>
-    {% endfor %}
+<a name="latest-tenso-memes"></a>
+<div class="row">
+  <div class="col-md-11 right">
+    <a class="btn btn-primary btn-sm" href="{% url 'web:tenso_list' %}">More...</a>
+  </div>
 </div>
+<br>
+<div class="latest-img-row">
+  {% for tenso in tensos %}
+  <div class="latest-img thumbnail">
+    <a href="{% url 'web:tenso' pk=tenso.pk %}">
+      <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
+<div class="row">
+  <div class="col-md-11 right">
+    <a class="btn btn-primary btn-sm" href="{% url 'web:tenso_list' %}">More...</a>
+  </div>
+</div>
+<br>
 {% endblock %}
 {% block javascript %}
-  <script src="{% static 'web/js/cropper.min.js' %}"></script>
-  <script src="{% static 'web/js/tenso.js' %}"></script>
+<script src="{% static 'web/js/cropper.min.js' %}"></script>
+<script src="{% static 'web/js/tenso.js' %}"></script>
 {% endblock %}

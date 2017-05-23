@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView, View
+from django.views.generic.list import ListView
 
 from .models import Document
 from .forms import DocumentForm
@@ -59,6 +60,13 @@ class ShareView(View):
         except Document.DoesNotExist:
             raise Http404
         
+class TensoListView(ListView):
+    model = Document
+    template_name = 'web/tenso_list.html'
+    context_object_name = 'tenso_list'
+    paginate_by = 20
+    ordering = '-created'
+
 class PrivacyView(TemplateView):
     template_name = 'web/privacy.html'
 

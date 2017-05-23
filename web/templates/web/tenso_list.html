@@ -1,0 +1,52 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    {% if is_paginated %}
+    <nav aria-label="paginator">
+      <ul class="pager">
+      {% if page_obj.has_previous %}
+      <li class="previous"><a href="{% url 'web:tenso_list' %}?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span>previous</a></li>
+      {% endif %}
+      <li>Page {{ page_obj.number }} of <a href="{% url 'web:tenso_list' %}?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+      {% if page_obj.has_next %}
+      <li class="next"><a class="page-link" href="{% url 'web:tenso_list'%}?page={{ page_obj.next_page_number }}">next<span aria-hidden="true">&rarr;</span></a></li>
+      {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="latest-img-row">
+      {% for tenso in tenso_list %}
+    <div class="latest-img thumbnail">
+	<a href="{% url 'web:tenso' pk=tenso.pk %}">
+	    <img src="{{ MEDIA_URL }}{{ tenso.image.name }}" />
+	</a>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% if is_paginated %}
+    <nav aria-label="paginator">
+      <ul class="pager">
+      {% if page_obj.has_previous %}
+      <li class="previous"><a href="{% url 'web:tenso_list' %}?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span>previous</a></li>
+      {% endif %}
+      <li>Page {{ page_obj.number }} of <a href="{% url 'web:tenso_list' %}?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+      {% if page_obj.has_next %}
+      <li class="next"><a class="page-link" href="{% url 'web:tenso_list'%}?page={{ page_obj.next_page_number }}">next<span aria-hidden="true">&rarr;</span></a></li>
+      {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

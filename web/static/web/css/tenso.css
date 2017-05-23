@@ -65,3 +65,7 @@ body {
 .navbar-header {
     width: 100%;
 }
+
+.right {
+    text-align: right;
+}
