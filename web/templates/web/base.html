@@ -25,7 +25,7 @@
 		<div class="navbar-header">
                   <a class="navbar-brand page-scroll" href="{% url 'web:index' %}">Tenso Meme Generator</a>
 		  <p class="navbar-btn pull-right">
-		    <a class="btn btn-primary" href="{% url 'web:index' %}">Make Your Own Meme</a>
+		    <a class="btn btn-primary" href="{% url 'web:index' %}#make-tenso">Make Your Own Meme</a>
 		  </p>
 		</div>
             </div>
@@ -33,30 +33,6 @@
 	<div class="container-fluid">
 	  <div class="row">
 	    <div class="col-md-7 col-md-offset-3">
-	      <script type="text/javascript">
-       		amzn_assoc_ad_type = "banner";
-		amzn_assoc_marketplace = "amazon";
-		amzn_assoc_region = "US";
-		amzn_assoc_placement = "assoc_banner_placement_default";
-		amzn_assoc_banner_type = "ez";
-		amzn_assoc_p = "48";
-		amzn_assoc_width = "728";
-		amzn_assoc_height = "90";
-		amzn_assoc_tracking_id = "tensogenerato-20";
-		amzn_assoc_linkid = "92b64c916b338c9cc7fe70484cd62fbe";
-	      </script>
-	      <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
-	    </div>
-	  </div>
-	  <hr />
-	  <div class="row">
-	    <div class="col-md-12">
-	      {% block content %}
-	      {% endblock %}
-	    </div>
-	  </div>
-	  <div class="row">
-	    <div class="col-md-8 col-md-offset-2">
 	      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	      <!-- TensoGenerator -->
 	      <ins class="adsbygoogle"
@@ -67,6 +43,13 @@
 	      <script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	      </script>
+	    </div>
+	  </div>
+	  <hr />
+	  <div class="row">
+	    <div class="col-md-12">
+	      {% block content %}
+	      {% endblock %}
 	    </div>
 	  </div>
 	</div>
