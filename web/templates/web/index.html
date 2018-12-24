@@ -4,6 +4,13 @@
 {% block content %}
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <div class="alert alert-success" style="text-align:center;">
+      <strong>New!</strong> Create animated Tenso GIFs!
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <div class="alert">
       This site allows you to generate Tenso memes.  Tenso memes are a series of multi-panel images that place emphasis on an unusual or odd area of a picture typically for comedic effect.  Each image usually consists of several frames of a picture that progressively zoom in on the targeted area.  Sometimes, the final close-up panel reveals something that is hardly visible in the full dimension image, creating an effect of surprise.  Read more <a href="http://knowyourmeme.com/memes/tenso" target="_blank">here</a>.
     </div>
@@ -30,6 +37,8 @@
 	  {% bootstrap_field form.text %}
 	  {% bootstrap_field form.text_pos %}
 	  {% bootstrap_field form.num_panels %}
+	  <span class="badge">New!</span>
+	  {% bootstrap_field form.gif %}
 	  {% buttons %}
 	  <input type="submit" class="btn btn-primary" value="Generate" />
 	  {% endbuttons %}
