@@ -20,36 +20,60 @@ class Tenso(object):
         return scale, im.resize((self.w, h))
 
     def generate(self):
-        # First scale the image to self.w pixels wide
-        # maintaining aspect ratio
-        scale, first = self.resize(self.im)
-        # Make every other panel this height
-        h = first.height
+        # This is the last image
+        print('Original image dims:')
+        print(self.im.width, self.im.height)
+        # Make the image a multiple of self.w
+        new_width = math.ceil(self.im.width/self.w) * self.w
+        scale = float(new_width) / float(self.im.width)
+        new_height = int(scale * self.im.height)
+        # Overwrite the original image with the resized image
+        self.im = self.im.resize((new_width, new_height))
+        print('New image dims:' )
+        print(self.im.width, self.im.height)
 
+        # Scale the crop box to match the new image dims
+        self.box = [i * scale for i in self.box]
+        last = self.im.crop(self.box)
+        print('Original box dims: ')
+        print(self.box[2] - self.box[0], self.box[3] - self.box[1])
+        last_scale, last = self.resize(last)
+        print('New box dims: ')
+        print(last.width, last.height)
+        first_scale, first = self.resize(self.im)
+        final_scale = last.width / (self.box[2] - self.box[0])
+        print('Scale factor: {}'.format(final_scale))
+        
+        h = first.height
+        
         # Create the final image
-        tenso = Image.new('RGB', (self.w, h * self.num_panels))
+        tenso_height = (first.height if first.height > last.height else
+                        last.height)
+        tenso = Image.new('RGB', (self.w, tenso_height * self.num_panels))
 
         # Paste first image
         tenso.paste(first, (0, 0))
-        
+
         # Where to paste the new images
         y = first.height
 
-        # Compute the scale factor
-        self.box = [i * scale for i in self.box]
-        w = (self.box[2] - self.box[0])
-        final_scale = self.w / w
-        scale = math.pow(final_scale, 1.0 / (self.num_panels - 1))
-
+        zoo = final_scale / (self.num_panels)
+        
         for panel in range(1, self.num_panels):
-            z = math.pow(scale, panel)
-            # If we're not zooming IN, just set the zoom factor
-            # to the final_scale to match the last panel
-            if z < 1.0:
-                z = final_scale
-            zoom = first.resize((int(first.width * z),
-                                 int(first.height * z)),
-                                Image.ANTIALIAS)
+            z = zoo * panel
+            print(z)
+            zoom = self.im.resize((int(self.im.width * z),
+                                   int(self.im.height * z)),
+                                  Image.ANTIALIAS)
+            if zoom.height < last.height:
+                pppp = last.height / zoom.height
+                zoom = zoom.resize((int(zoom.width * pppp), last.height),
+                                   Image.ANTIALIAS)
+            if zoom.width < last.width:
+                pppp = last.width / zoom.width
+                zoom = zoom.resize((last.width, int(zoom.height * pppp)),
+                                    Image.ANTIALIAS)
+            print(zoom.width, zoom.height)
             # Center of zoomed image
             zc = zoom.width / 2
             # Scale the input box
@@ -76,7 +100,12 @@ class Tenso(object):
             zoom = zoom.crop(box)
             tenso.paste(zoom, (0, y))
             y = y + zoom.height
-        
+
+        # tenso.paste(last, (0, y))
+        print(tenso.height)
+        print(y)
+        tenso = tenso.crop([0, 0, tenso.width, y])
+        '''
         # Do texty stuff
         if self.text is not None:
             draw = ImageDraw.Draw(tenso)
@@ -90,6 +119,7 @@ class Tenso(object):
             if self.text_pos == 'bottom':
                 ty = tenso.height - fh - 10
             draw.text((tx, ty), self.text, font=font)
+        '''
         return tenso
 
 
