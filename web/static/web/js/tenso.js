@@ -30,6 +30,12 @@ $(document).ready(function() {
 		}
             };
 	    reader.readAsDataURL(event.target.files[0]);
+	    document.location.href = window.location.protocol +
+		"//"  + 
+		window.location.host +
+		"/" +
+		window.location.pathname.split("/")[1] +
+		"#preview";
 	}
 	else {
 	    $( '#img-upload-warning' ).removeClass('hidden');
