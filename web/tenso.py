@@ -14,6 +14,30 @@ class Tenso(object):
         self.text_pos = text_pos
         self.font_path = font_path
 
+        # exif_val: (rotate degrees cw, mirror 0=no 1=horiz 2=vert)
+        # see http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html
+        ORIENT = { 
+            2: (0, 1),
+            3: (180, 0),
+            4: (0, 2),
+            5: (90, 1),
+            6: (270, 0),
+            7: (270, 1),
+            8: (90, 0),
+        }
+        try:
+            orient = self.im._getexif()[274]
+        except (AttributeError, KeyError, TypeError, ValueError):
+            orient = 1 # default (normal)
+        if orient in ORIENT:
+            (rotate, mirror) = ORIENT[orient]
+            if rotate:
+                self.im = self.im.rotate(rotate)
+            if mirror == 1:
+                self.im = self.im.transpose(Image.FLIP_LEFT_RIGHT)
+            elif mirror == 2:
+                self.im = self.im.transpose(Image.FLIP_TOP_BOTTOM)
+
     def generate(self):
         # First compute the maximum height for each panel
         h = int(self.im.height * (float(self.w) / float(self.im.width)))
