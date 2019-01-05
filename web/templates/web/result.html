@@ -29,13 +29,9 @@
 	    or
 	    {% endif %}
 	  </center>
-	    Right-click on the image and choose "Save As.." to save it to your computer or share it to Facebook using the Share button below.<br>
+	    Right-click on the image and choose "Save As.." to save it to your computer or share it using the buttons below.<br><br>
 	  <center>
-	    <div class="fb-share-button"
-		 data-href="{{ url }}"
-		 data-layout="button_count"
-		 data-size="large">
-	    </div>
+	    <div class="addthis_inline_share_toolbox"></div>
 	  </center>
 	</div>
 	<div class="thumbnail">
@@ -54,11 +50,7 @@
 	    or
 	    <br>
 	    {% endif %}
-	    <div class="fb-share-button"
-		 data-href="{{ url }}"
-		 data-layout="button_count"
-		 data-size="large">
-	    </div>
+	    <div class="addthis_inline_share_toolbox"></div>
 	  </center>
 	</div>
     </div>
@@ -78,17 +70,6 @@
 </script>
   </div>
 </div>
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-{% endblock %}
-{% block javascript %}
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=993885984051036";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5867029aed7a3161"></script>
 <script src="{% static 'web/js/result.js' %}"></script>
 {% endblock %}
